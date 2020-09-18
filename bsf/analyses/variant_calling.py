@@ -3891,7 +3891,7 @@ class VariantCallingGATK(Analysis):
                 jsonpickle.set_encoder_options('json', sort_keys=True, indent=4)
 
                 with open(file=json_path, mode='w') as json_fh:
-                    runnableJSON = jsonpickle.encode(pickler_dict_align_lane, unpicklable=False)
+                    runnableJSON = jsonpickle.encode(pickler_dict_align_lane, indent=4)
                     json_fh.write(runnableJSON)
 
                 # Create a bsf_run_bwa.py job to run the pickled object.

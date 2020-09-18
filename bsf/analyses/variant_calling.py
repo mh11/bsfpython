@@ -32,6 +32,7 @@ import pickle
 import sys
 import warnings
 import json
+import jsonpickle
 from subprocess import Popen
 
 from bsf.analysis import Analysis, Stage
@@ -3886,9 +3887,6 @@ class VariantCallingGATK(Analysis):
                 with open(file=pickler_path, mode='wb') as pickler_file:
                     pickler = pickle.Pickler(file=pickler_file, protocol=pickle.HIGHEST_PROTOCOL)
                     pickler.dump(pickler_dict_align_lane)
-
-                import jsonpickle
-                jsonpickle.set_encoder_options('json', sort_keys=True, indent=4)
 
                 with open(file=json_path, mode='w') as json_fh:
                     runnableJSON = jsonpickle.encode(pickler_dict_align_lane, indent=4)
